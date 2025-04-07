@@ -1,0 +1,40 @@
+.alpabetList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+
+  background-color: rgb(57, 74, 97);
+  border-radius: 10px;
+  overflow: hidden;
+
+  position: absolute;
+  top: 0px;
+  right: 1px;
+  z-index: 9999;
+}
+
+.alpabetItem {
+  width: 20px;
+  height: 20px;
+}
+
+.letterBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.resetIcon {
+  flex-shrink: 0;
+  color: aliceblue;
+  width: 20px;
+  height: 20px;
+}

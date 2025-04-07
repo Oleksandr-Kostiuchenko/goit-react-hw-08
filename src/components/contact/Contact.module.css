@@ -1,0 +1,140 @@
+.contactWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+@media screen and (max-width: 768px) {
+  .contactWrapper {
+    width: 90%;
+  }
+}
+
+.personInfoWrapper {
+  display: flex;
+  gap: 15px;
+}
+
+.nameWrapper {
+  width: 180px;
+  border-bottom: 1px solid #d9dbe9;
+}
+
+.personName {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #333143;
+}
+
+.personNumber {
+  font-weight: 500;
+  font-size: 15px;
+  color: #6e7191;
+}
+
+.personAvatar {
+  width: 53px;
+  height: 53px;
+  background-color: #1b2124;
+  border-radius: 16px;
+
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.deleteBtn {
+  width: 70px;
+  height: 20px;
+
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 14px;
+
+  background-color: #bc5c3f;
+  color: aliceblue;
+
+  transition: background-color 250ms linear;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-color: #8e4e3a;
+}
+
+@media screen and (min-width: 768px) {
+  .nameWrapper {
+    width: 220px;
+  }
+
+  .personAvatar {
+    width: 63px;
+    height: 63px;
+  }
+
+  .deleteBtn {
+    width: 80px;
+    height: 30px;
+  }
+
+  .nameWrapper {
+    width: 500px;
+    border-bottom: 1px solid #d9dbe9;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .nameWrapper {
+    width: 260px;
+  }
+
+  .personAvatar {
+    width: 73px;
+    height: 73px;
+  }
+
+  .deleteBtn {
+    width: 90px;
+    height: 40px;
+  }
+
+  .nameWrapper {
+    width: 900px;
+    border-bottom: 1px solid #d9dbe9;
+  }
+}
+
+.favBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.likeIcon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.btnsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}

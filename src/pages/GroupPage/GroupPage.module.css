@@ -1,0 +1,25 @@
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.navItem {
+  background-color: #192f61;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 250ms linear;
+}
+
+.navItem:hover {
+  transform: scale(1.1);
+}

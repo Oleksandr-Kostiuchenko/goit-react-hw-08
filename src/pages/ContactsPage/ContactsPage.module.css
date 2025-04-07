@@ -1,0 +1,102 @@
+.pageTitle {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.iconWrapperEdit {
+  background-color: #4680ff;
+  /* width: 35px; */
+  /* height: 35px; */
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.iconPencil {
+  width: 24px;
+  height: 24px;
+  fill: aliceblue;
+}
+
+@media screen and (min-width: 768px) {
+  .pageTitle {
+    font-size: 24px;
+  }
+
+  .pageHeader {
+    gap: 20px;
+  }
+
+  .iconWrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .pageTitle {
+    font-size: 28px;
+  }
+
+  .pageHeader {
+    gap: 30px;
+  }
+
+  .iconWrapper {
+    width: 60px;
+    height: 60px;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.contactsWrapper {
+  position: relative;
+}
+
+.iconWrapperMenu {
+  margin-left: auto;
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
