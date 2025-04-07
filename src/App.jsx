@@ -2,9 +2,9 @@ import style from "./App.module.css";
 
 //* Pages
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
+import ContactDetailPage from "./pages/ContactDetailPage/ContactDetailPage";
 import AddPage from "./pages/AddPage/AddPage";
 import FavPage from "./pages/FavPage/FavPage";
-import ContactDetailPage from "./pages/ContactDetailPage/ContactDetailPage";
 import GroupPage from "./pages/GroupPage/GroupPage";
 import FamList from "./components/FamList/FamList";
 import FriendList from "./components/FriendList/FriendList";

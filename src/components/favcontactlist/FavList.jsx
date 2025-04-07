@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 //* Redux
 import { useSelector, useDispatch } from "react-redux";
-import { selectVisibleFavContacts } from "../../redux/favSlice";
+import { selectVisibleFavContacts } from "../../redux/favcontacts/selectors";
 
 //* Components
 import Contact from "../contact/Contact";

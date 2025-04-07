@@ -7,7 +7,7 @@ import { IoCloseCircleSharp } from "react-icons/io5";
 
 //* Redux
 import { useDispatch } from "react-redux";
-import { changeFilter } from "../../redux/filtersSlice";
+import { changeFilter } from "../../redux/filters/slice";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 

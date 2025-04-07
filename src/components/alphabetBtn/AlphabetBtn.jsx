@@ -2,8 +2,7 @@ import style from "./AlphabetBtn.module.css";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilter } from "../../redux/filtersSlice";
-import { button } from "framer-motion/client";
+import { changeFilter } from "../../redux/filters/slice";
 
 const AlphabetBtn = ({ children }) => {
   const dispatch = useDispatch();

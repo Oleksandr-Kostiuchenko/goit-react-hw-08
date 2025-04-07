@@ -13,8 +13,8 @@ import Alert from "../../components/Alert/Alert";
 
 //* Redux
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectError } from "../../redux/contactsSlice";
-import { selectFavContacts } from "../../redux/favSlice";
+import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
+import { selectFavContacts } from "../../redux/favcontacts/selectors";
 
 //* Router
 import { Outlet } from "react-router-dom";

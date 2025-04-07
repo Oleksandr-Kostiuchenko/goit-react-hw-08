@@ -2,10 +2,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 //* Reducers
-import contactsReducer from "./contactsSlice";
-import filterReducer from "./filtersSlice";
-import favortitesReducer from "./favSlice";
-import groupReducer from "./categorySlice";
+import contactsReducer from "./contacts/slice";
+import filterReducer from "./filters/slice";
+import favortitesReducer from "./favcontacts/slice";
+import groupReducer from "./category/slice";
+import authReducer from "./auth/slice";
 
 //* Persist
 import {
@@ -36,9 +37,19 @@ const persistedGroupsReducer = persistReducer(
   groupReducer
 );
 
+const persistedAuthReducer = persistReducer(
+  {
+    key: "token",
+    storage,
+    whitelist: ["token"],
+  },
+  authReducer
+);
+
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
+    auth: persistedAuthReducer,
     filters: filterReducer,
     fav: persistedFavsReducer,
     groups: persistedGroupsReducer,

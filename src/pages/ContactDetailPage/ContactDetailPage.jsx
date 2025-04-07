@@ -23,16 +23,16 @@ import Loader from "../../components/Loader/Loader";
 //* Redux
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
+import { fetchContacts } from "../../redux/contacts/operations";
 import {
   selectContacts,
   selectError,
   selectIsLoading,
-} from "../../redux/contactsSlice";
+} from "../../redux/contacts/selectors";
 import { useEffect, useState } from "react";
-import { editContact } from "../../redux/contactsOps";
+import { editContact } from "../../redux/contacts/operations";
 
-import { toggleFam, toggleFriend, toggleJob } from "../../redux/categorySlice";
+import { toggleFam, toggleFriend, toggleJob } from "../../redux/category/slice";
 
 //* Router
 import { NavLink } from "react-router-dom";

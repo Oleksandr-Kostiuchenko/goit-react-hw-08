@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 //* Redux
 import { useSelector, useDispatch } from "react-redux";
-import { selectJob } from "../../redux/categorySlice";
+import { selectJob } from "../../redux/category/selectors";
 
 //* Components
 import Contact from "../contact/Contact";

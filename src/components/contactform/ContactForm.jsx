@@ -8,8 +8,8 @@ import toast, { Toaster } from "react-hot-toast";
 
 // * Redux
 import { useDispatch, useSelector } from "react-redux";
-import { selectError } from "../../redux/contactsSlice";
-import { addContact } from "../../redux/contactsOps";
+import { selectError } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
 
 //* Formik
 import * as Yup from "yup";

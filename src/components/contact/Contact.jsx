@@ -7,12 +7,11 @@ import { FaHeart } from "react-icons/fa6";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
-import { selectError } from "../../redux/contactsSlice";
-import { selectFavContacts } from "../../redux/favSlice";
-import { deleteContact } from "../../redux/contactsOps";
-import { addFav } from "../../redux/favSlice";
-import { deleteFav } from "../../redux/favSlice";
-import { removeFromAllCategories } from "../../redux/categorySlice";
+import { selectError } from "../../redux/contacts/selectors";
+import { selectFavContacts } from "../../redux/favcontacts/selectors";
+import { deleteContact } from "../../redux/contacts/operations";
+import { addFav, deleteFav } from "../../redux/favcontacts/slice";
+import { removeFromAllCategories } from "../../redux/category/slice";
 
 //* Router
 import { NavLink } from "react-router-dom";

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 //* Redux
 import { useSelector, useDispatch } from "react-redux";
-import { selectFam } from "../../redux/categorySlice";
+import { selectFam } from "../../redux/category/selectors";
 
 //* Components
 import Contact from "../contact/Contact";
@@ -18,7 +18,6 @@ const notifySuccessRemoove = (personName) =>
 
 const FamList = () => {
   const famList = useSelector(selectFam);
-  console.log(famList);
 
   return (
     <>

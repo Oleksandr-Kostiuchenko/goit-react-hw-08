@@ -13,13 +13,13 @@ import Alert from "../../components/Alert/Alert";
 
 //* Redux
 import { useDispatch } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
+import { fetchContacts } from "../../redux/contacts/operations";
 import { useSelector } from "react-redux";
 import {
   selectContacts,
   selectIsLoading,
   selectError,
-} from "../../redux/contactsSlice";
+} from "../../redux/contacts/selectors";
 
 const ContactsPage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

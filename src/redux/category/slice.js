@@ -1,7 +1,6 @@
 //* Redux
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-//* Slice
 const slice = createSlice({
   name: "category",
   initialState: {
@@ -50,8 +49,3 @@ const slice = createSlice({
 export const { toggleFam, toggleFriend, toggleJob, removeFromAllCategories } =
   slice.actions;
 export default slice.reducer;
-
-//* Selectors
-export const selectFam = (state) => state.groups.family;
-export const selectFriends = (state) => state.groups.friends;
-export const selectJob = (state) => state.groups.job;

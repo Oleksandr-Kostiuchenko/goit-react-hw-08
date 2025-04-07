@@ -1,5 +1,5 @@
 //* Redux
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 //* Slice
 const slice = createSlice({
@@ -19,14 +19,3 @@ const slice = createSlice({
 
 export const { addFav, deleteFav } = slice.actions;
 export default slice.reducer;
-
-//* Selectors
-import { selectNameFilter } from "./filtersSlice";
-export const selectFavContacts = (state) => state.fav.items;
-
-export const selectVisibleFavContacts = createSelector(
-  [selectFavContacts, selectNameFilter],
-  (favContacts, nameFilter) => {
-    return favContacts.filter((el) => el.name.includes(nameFilter));
-  }
-);

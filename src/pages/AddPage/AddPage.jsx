@@ -10,7 +10,7 @@ import Alert from "../../components/Alert/Alert";
 //* Redux
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectError } from "../../redux/contactsSlice";
+import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
 
 const AddPage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
