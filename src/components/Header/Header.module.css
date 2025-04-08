@@ -12,17 +12,6 @@
   margin-bottom: 20px;
 }
 
-.iconWrapper {
-  width: 40px;
-  height: 40px;
-  border-radius: 16px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
 .iconWrapperEdit {
   background-color: #4680ff;
   /* width: 35px; */
@@ -48,16 +37,6 @@
   .pageHeader {
     gap: 20px;
   }
-
-  .iconWrapper {
-    width: 50px;
-    height: 50px;
-  }
-
-  .icon {
-    width: 50px;
-    height: 50px;
-  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -68,31 +47,4 @@
   .pageHeader {
     gap: 30px;
   }
-
-  .iconWrapper {
-    width: 60px;
-    height: 60px;
-  }
-
-  .icon {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-.iconWrapperMenu {
-  margin-left: auto;
-}
-
-.menuBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 40px;
-  height: 40px;
-
-  border: none;
-  outline: none;
-  background-color: transparent;
 }

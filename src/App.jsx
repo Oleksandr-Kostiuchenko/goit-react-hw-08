@@ -9,15 +9,18 @@ import GroupPage from "./pages/GroupPage/GroupPage";
 import FamList from "./components/FamList/FamList";
 import FriendList from "./components/FriendList/FriendList";
 import JobList from "./components/JobList/JobList";
+import Layout from "./components/Layout/Layout";
+
+import HomePage from "./pages/HomePage/HomePage";
 
 //* Router
 import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <Layout>
       <Routes>
-        <Route path="/" element={<ContactsPage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/:contactId" element={<ContactDetailPage />} />
         <Route path="/add" element={<AddPage />} />
         <Route path="/fav" element={<FavPage />} />
@@ -28,7 +31,7 @@ function App() {
           <Route path="job" element={<JobList />} />
         </Route>
       </Routes>
-    </>
+    </Layout>
   );
 }
 

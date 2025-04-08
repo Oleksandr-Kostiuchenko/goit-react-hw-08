@@ -35,17 +35,17 @@ const ContactsPage = () => {
 
   return (
     <>
-      <Header setModalIsOpen={setModalIsOpen} />
+      {/* <Header setModalIsOpen={setModalIsOpen} /> */}
       <SearchBox />
 
-      {errorData && <Alert>Sorry! Something went wrong...</Alert>}
+      {/* {errorData && <Alert>Sorry! Something went wrong...</Alert>} */}
 
       <div className={style.contactsWrapper}>
         {contactsData.length > 1 && <AlphabetFilter />}
         <ContactList />
       </div>
-      {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
-      {isLoadingData && <Loader />}
+      {/* {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />} */}
+      {/* {isLoadingData && <Loader />} */}
     </>
   );
 };
