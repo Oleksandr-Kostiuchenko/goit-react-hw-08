@@ -11,6 +11,10 @@ import { HiUserGroup } from "react-icons/hi2";
 import { NavLink } from "react-router-dom";
 
 const Navigation = ({ setModalIsOpen }) => {
+  const handleNavClick = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <div className={style.menuBackdrop}>
       <div className={`${style.container} ${style.mobileMenuContainer}`}>
@@ -26,25 +30,25 @@ const Navigation = ({ setModalIsOpen }) => {
         <nav className={style.navWrapper}>
           <ul className={style.navList}>
             <li className={style.navItem}>
-              <NavLink to="/">
+              <NavLink to="/contacts" onClick={handleNavClick}>
                 <FaHome />
-                Home
+                Contacts
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/add">
+              <NavLink to="/add" onClick={handleNavClick}>
                 <IoPersonAdd />
                 Add contacts
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/fav">
+              <NavLink to="/fav" onClick={handleNavClick}>
                 <FaHeart />
                 Favorites
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/groups">
+              <NavLink to="/groups" onClick={handleNavClick}>
                 <HiUserGroup />
                 Groups
               </NavLink>

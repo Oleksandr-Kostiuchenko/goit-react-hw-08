@@ -21,13 +21,8 @@ import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const GroupPage = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   return (
     <>
-      <Header setModalIsOpen={setModalIsOpen} />
-      {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
-
       <ul className={style.navList}>
         <li className={style.navItem}>
           <NavLink to="family">Family</NavLink>

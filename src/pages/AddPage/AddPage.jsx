@@ -20,11 +20,7 @@ const AddPage = () => {
 
   return (
     <>
-      <Header setModalIsOpen={setModalIsOpen} />
-      {errorData && <Alert>Sorry! Something went wrong...</Alert>}
       <ContactForm />
-      {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
-      {isLoadingData && <Loader />}
     </>
   );
 };

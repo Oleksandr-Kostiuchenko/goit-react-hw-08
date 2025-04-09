@@ -13,24 +13,13 @@ import Alert from "../../components/Alert/Alert";
 
 //* Redux
 import { useSelector } from "react-redux";
-import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
 import { selectFavContacts } from "../../redux/favcontacts/selectors";
 
 const FavPage = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const favContacts = useSelector(selectFavContacts);
-  const isLoadingData = useSelector(selectIsLoading);
-  const errorData = useSelector(selectError);
-
   return (
     <>
-      <Header setModalIsOpen={setModalIsOpen} />
       <SearchBox />
-
-      {isLoadingData && <Loader />}
-
-      {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
 
       {favContacts.length > 0 ? (
         <FavList />

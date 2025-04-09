@@ -11,6 +11,9 @@ import AuthNav from "../AuthNav/AuthNav";
 import { useSelector } from "react-redux";
 import { selectisLoggedIn } from "../../redux/auth/selectors";
 
+//* Router
+import { NavLink } from "react-router-dom";
+
 const Header = ({ setModalIsOpen }) => {
   const isLoggedIn = useSelector(selectisLoggedIn);
 
@@ -26,7 +29,9 @@ const Header = ({ setModalIsOpen }) => {
         <div className={style.iconWrapper}>
           <MdAccountCircle className={style.icon} />
         </div>
-        <h1 className={style.pageTitle}>Contacts</h1>
+        <NavLink to="/" className={style.pageTitle}>
+          Home
+        </NavLink>
         {isLoggedIn ? <UserNav setModalIsOpen={setModalIsOpen} /> : <AuthNav />}
       </motion.div>
     </>

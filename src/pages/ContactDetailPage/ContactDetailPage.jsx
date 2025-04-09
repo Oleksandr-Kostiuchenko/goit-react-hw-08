@@ -62,7 +62,6 @@ const notifyFailure = () =>
 const ContactDetailPage = () => {
   const dispatch = useDispatch();
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editActivated, setEditActivated] = useState(false);
 
   const toggleEdit = () => {
@@ -73,7 +72,7 @@ const ContactDetailPage = () => {
     try {
       await dispatch(
         editContact({
-          ...contactData,
+          id: contactId,
           ...formData,
         })
       ).unwrap();
@@ -109,10 +108,8 @@ const ContactDetailPage = () => {
 
   return (
     <>
-      <Header setModalIsOpen={setModalIsOpen} />
-
       <div className={style.buttonsWrapper}>
-        <NavLink className={style.backBtn} to="/">
+        <NavLink className={style.backBtn} to="/contacts">
           <IoChevronBack className={style.backIcon} />
         </NavLink>
 
@@ -246,7 +243,6 @@ const ContactDetailPage = () => {
         </div>
       </div>
 
-      {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
       <Toaster position="top-center" reverseOrder={false} />
     </>
   );

@@ -47,3 +47,9 @@ h1 {
   margin-bottom: 15px;
   color: #c0bcbc;
 }
+
+.contactBookIcon {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}

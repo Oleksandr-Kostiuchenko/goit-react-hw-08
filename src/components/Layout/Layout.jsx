@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
 
   return (
     <div className={style.layoutWrapper}>
-      {/* <AppBar setModalIsOpen={setModalIsOpen} /> */}
       <Header setModalIsOpen={setModalIsOpen} />
 
       {children}

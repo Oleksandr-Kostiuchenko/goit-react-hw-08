@@ -1,6 +1,7 @@
 //* Libraries
 import style from "./HomePage.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import { RiContactsBook2Fill } from "react-icons/ri";
 
 //* React
 import { useState } from "react";
@@ -14,6 +15,7 @@ const HomePage = () => {
 
   return (
     <div className={style.homeWrapper}>
+      <RiContactsBook2Fill className={style.contactBookIcon} />
       <h1>Welcome to Contact Book App!</h1>
       <p className={style.description}>
         To start using it, you should create an account or login.

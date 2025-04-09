@@ -22,8 +22,6 @@ import {
 } from "../../redux/contacts/selectors";
 
 const ContactsPage = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-
   const dispatch = useDispatch();
   const contactsData = useSelector(selectContacts);
   const isLoadingData = useSelector(selectIsLoading);
@@ -35,17 +33,12 @@ const ContactsPage = () => {
 
   return (
     <>
-      {/* <Header setModalIsOpen={setModalIsOpen} /> */}
       <SearchBox />
-
-      {/* {errorData && <Alert>Sorry! Something went wrong...</Alert>} */}
 
       <div className={style.contactsWrapper}>
         {contactsData.length > 1 && <AlphabetFilter />}
         <ContactList />
       </div>
-      {/* {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />} */}
-      {/* {isLoadingData && <Loader />} */}
     </>
   );
 };
