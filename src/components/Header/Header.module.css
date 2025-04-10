@@ -49,3 +49,10 @@
     gap: 30px;
   }
 }
+
+.userDataWrapper {
+  display: flex;
+  gap: 10px;
+
+  margin-left: auto;
+}

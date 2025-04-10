@@ -12,15 +12,27 @@ import Loader from "../../components/Loader/Loader";
 import Alert from "../../components/Alert/Alert";
 
 //* Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
 import { selectFavContacts } from "../../redux/favcontacts/selectors";
+import { selectUser } from "../../redux/auth/selectors";
+import { setFavUser, fetchFavs } from "../../redux/favcontacts/slice";
 
 //* Router
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 const GroupPage = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUser);
+
+  useEffect(() => {
+    if (userData.email) {
+      dispatch(setFavUser(userData.email));
+      dispatch(fetchFavs());
+    }
+  }, [dispatch, userData.email]);
+
   return (
     <>
       <ul className={style.navList}>

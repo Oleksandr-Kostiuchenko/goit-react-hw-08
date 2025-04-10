@@ -20,16 +20,28 @@ import {
   selectIsLoading,
   selectError,
 } from "../../redux/contacts/selectors";
+import { selectUser } from "../../redux/auth/selectors";
+import { setFavUser, fetchFavs } from "../../redux/favcontacts/slice";
+import { setGroupUser, fetchGroups } from "../../redux/category/slice";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const contactsData = useSelector(selectContacts);
-  const isLoadingData = useSelector(selectIsLoading);
-  const errorData = useSelector(selectError);
+  const userData = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (userData.email) {
+      dispatch(setFavUser(userData.email));
+      dispatch(fetchFavs());
+
+      dispatch(setGroupUser(userData.email));
+      dispatch(fetchGroups());
+    }
+  }, [dispatch, userData.email]);
 
   return (
     <>

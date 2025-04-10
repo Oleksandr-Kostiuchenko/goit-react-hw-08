@@ -21,18 +21,11 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-const persistedFavsReducer = persistReducer(
-  {
-    key: "favorites",
-    storage,
-  },
-  favortitesReducer
-);
-
 const persistedGroupsReducer = persistReducer(
   {
     key: "groups",
     storage,
+    whitelist: ["user"],
   },
   groupReducer
 );
@@ -51,7 +44,7 @@ export const store = configureStore({
     contacts: contactsReducer,
     auth: persistedAuthReducer,
     filters: filterReducer,
-    fav: persistedFavsReducer,
+    fav: favortitesReducer,
     groups: persistedGroupsReducer,
   },
   middleware: (getDefaultMiddleware) =>

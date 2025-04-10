@@ -1,3 +1,3 @@
-export const selectFam = (state) => state.groups.family;
-export const selectFriends = (state) => state.groups.friends;
-export const selectJob = (state) => state.groups.job;
+export const selectFam = (state) => state.groups.groups.family;
+export const selectFriends = (state) => state.groups.groups.friends;
+export const selectJob = (state) => state.groups.groups.job;

@@ -6,6 +6,7 @@ import {
   deleteContact,
   editContact,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 //* Handlers
 const handlePending = (state, action) => {
@@ -62,6 +63,13 @@ const slice = createSlice({
       );
     });
     builder.addCase(editContact.rejected, handleRejected);
+
+    // Logout
+    builder.addCase(logout.fulfilled, (state, action) => {
+      state.items = [];
+      state.isLoading = false;
+      state.error = null;
+    });
   },
 });
 

@@ -12,6 +12,7 @@ import { selectFavContacts } from "../../redux/favcontacts/selectors";
 import { deleteContact } from "../../redux/contacts/operations";
 import { addFav, deleteFav } from "../../redux/favcontacts/slice";
 import { removeFromAllCategories } from "../../redux/category/slice";
+import { selectUser } from "../../redux/auth/selectors";
 
 //* Router
 import { NavLink } from "react-router-dom";
@@ -31,12 +32,13 @@ const Contact = ({ contactData }) => {
   const dispatch = useDispatch();
   const errorData = useSelector(selectError);
   const favInfo = useSelector(selectFavContacts);
-  const isFav = favInfo.some((fav) => fav.id === contactData.id);
+  const isFav = favInfo.some((fav) => fav && fav.id === contactData.id);
+  const userData = useSelector(selectUser);
 
   const handleDelete = async () => {
     try {
       await dispatch(deleteContact(contactData.id)).unwrap();
-      dispatch(deleteFav(contactData.id));
+      dispatch(deleteFav(contactData));
       dispatch(removeFromAllCategories(contactData));
 
       if (!errorData) {
@@ -51,7 +53,7 @@ const Contact = ({ contactData }) => {
     const isFavorite = favInfo.some((fav) => fav.id === contactData.id);
 
     if (isFavorite) {
-      dispatch(deleteFav(contactData.id));
+      dispatch(deleteFav(contactData));
     } else {
       dispatch(addFav(contactData));
     }

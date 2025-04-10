@@ -39,7 +39,6 @@ const RegsiterForm = () => {
   const dispatch = useDispatch();
 
   const onFormSubmit = (formData, actions) => {
-    console.log(formData);
     dispatch(register(formData));
 
     notifySuccessAdd();

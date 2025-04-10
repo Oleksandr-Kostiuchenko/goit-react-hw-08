@@ -19,8 +19,19 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 //* Router
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+
+//* Redux
+import { useDispatch } from "react-redux";
+import { refreshUser } from "./redux/auth/operations";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Layout>
       <Routes>
@@ -103,19 +114,12 @@ function App() {
             }
           />
         </Route>
-
-        {/* <Route path="/:contactId" element={<ContactDetailPage />} />
-        <Route path="/add" element={<AddPage />} />
-        <Route path="/fav" element={<FavPage />} />
-
-        <Route path="/groups" element={<GroupPage />}>
-          <Route path="family" element={<FamList />} />
-          <Route path="friends" element={<FriendList />} />
-          <Route path="job" element={<JobList />} />
-        </Route> */}
       </Routes>
     </Layout>
   );
 }
 
 export default App;
+
+// sanyatopedevbest@gmail.com
+// alextopdevchik@gmail.com

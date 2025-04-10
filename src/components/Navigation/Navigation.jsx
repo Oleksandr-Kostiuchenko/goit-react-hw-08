@@ -10,8 +10,19 @@ import { HiUserGroup } from "react-icons/hi2";
 //* Router
 import { NavLink } from "react-router-dom";
 
+//* Redux
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/auth/operations";
+
 const Navigation = ({ setModalIsOpen }) => {
+  const dispatch = useDispatch();
+
   const handleNavClick = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
     setModalIsOpen(false);
   };
 
@@ -52,6 +63,9 @@ const Navigation = ({ setModalIsOpen }) => {
                 <HiUserGroup />
                 Groups
               </NavLink>
+            </li>
+            <li className={style.logoutBtnEl}>
+              <button onClick={handleLogout}>Logout</button>
             </li>
           </ul>
         </nav>

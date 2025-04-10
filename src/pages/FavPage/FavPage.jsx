@@ -12,11 +12,23 @@ import Loader from "../../components/Loader/Loader";
 import Alert from "../../components/Alert/Alert";
 
 //* Redux
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectFavContacts } from "../../redux/favcontacts/selectors";
+import { selectUser } from "../../redux/auth/selectors";
+import { fetchFavs, setFavUser } from "../../redux/favcontacts/slice";
 
 const FavPage = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUser);
   const favContacts = useSelector(selectFavContacts);
+
+  useEffect(() => {
+    if (userData.email) {
+      dispatch(setFavUser(userData.email));
+      dispatch(fetchFavs());
+    }
+  }, [dispatch, userData.email]);
+
   return (
     <>
       <SearchBox />
