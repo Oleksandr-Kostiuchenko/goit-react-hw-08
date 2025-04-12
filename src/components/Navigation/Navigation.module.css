@@ -59,6 +59,10 @@
   width: 28px;
   height: 28px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: none;
   outline: none;
   padding: 0;
@@ -68,6 +72,12 @@
   right: 16px;
 
   background-color: transparent;
+}
+
+.closeIcon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 .navWrapper {
@@ -87,11 +97,59 @@
 
 .navItem {
   display: flex;
+  align-items: center;
+  /* justify-content: center; */
   gap: 5px;
+}
+
+.NavLink {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.activeLink {
+  color: #2e53a3;
+  font-weight: 700;
+}
+
+.navIcon {
+  width: 35px;
+  height: 35px;
+  transition: color 250ms linear, transform 250ms linear;
+}
+
+.navItem:hover .navIcon {
+  color: #2e53a3;
+  transform: scale(1.2) rotate(5deg);
+  /* transform: rotate(10deg); */
 }
 
 .logoutBtnEl {
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
+}
+
+.logoutBtn {
+  width: 150px;
+  height: 40px;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #e65050;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  outline: none;
+
+  transition: transform 250ms linear, background-color 250ms linear;
+}
+
+.logoutBtn:hover {
+  transform: scale(1.1);
+  background-color: #a32e2e;
 }

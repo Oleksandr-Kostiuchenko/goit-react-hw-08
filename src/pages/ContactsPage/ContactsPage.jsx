@@ -1,15 +1,12 @@
 //* Libraries
 import style from "./ContactsPage.module.css";
-import { useState, useEffect, useId } from "react";
+import { useEffect, useState } from "react";
 
 //* Components
 import ContactList from "../../components/contactlist/ContactList";
 import SearchBox from "../../components/searchbox/SearchBox";
 import AlphabetFilter from "../../components/alphabetFilter/AlphabetFilter";
-import Navigation from "../../components/Navigation/Navigation";
-import Header from "../../components/Header/Header";
-import Loader from "../../components/Loader/Loader";
-import Alert from "../../components/Alert/Alert";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 //* Redux
 import { useDispatch } from "react-redux";
@@ -25,6 +22,8 @@ import { setFavUser, fetchFavs } from "../../redux/favcontacts/slice";
 import { setGroupUser, fetchGroups } from "../../redux/category/slice";
 
 const ContactsPage = () => {
+  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
+
   const dispatch = useDispatch();
   const contactsData = useSelector(selectContacts);
   const userData = useSelector(selectUser);
@@ -49,8 +48,12 @@ const ContactsPage = () => {
 
       <div className={style.contactsWrapper}>
         {contactsData.length > 1 && <AlphabetFilter />}
-        <ContactList />
+        <ContactList setDeleteModalIsOpen={setDeleteModalIsOpen} />
       </div>
+
+      {deleteModalIsOpen && (
+        <DeleteModal setDeleteModalIsOpen={setDeleteModalIsOpen} />
+      )}
     </>
   );
 };

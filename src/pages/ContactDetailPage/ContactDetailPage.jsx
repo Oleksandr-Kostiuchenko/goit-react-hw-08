@@ -9,7 +9,6 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { FaPhone } from "react-icons/fa";
 import { BsPersonFill } from "react-icons/bs";
 import { FiEdit2 } from "react-icons/fi";
-import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
 import { FaUserFriends } from "react-icons/fa";
@@ -21,7 +20,6 @@ import Navigation from "../../components/Navigation/Navigation";
 import Loader from "../../components/Loader/Loader";
 
 //* Redux
-import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchContacts } from "../../redux/contacts/operations";
 import {
@@ -33,9 +31,15 @@ import { useEffect, useState } from "react";
 import { editContact } from "../../redux/contacts/operations";
 
 import { toggleFam, toggleFriend, toggleJob } from "../../redux/category/slice";
+import {
+  selectFam,
+  selectFriends,
+  selectJob,
+} from "../../redux/category/selectors";
 
 //* Router
 import { NavLink } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 //* Formik
 import * as Yup from "yup";
@@ -53,14 +57,19 @@ const validationSchema = Yup.object().shape({
 
 //* Notifier
 const notifySuccess = () => toast.success(`Success!`);
-
 const notifyFailure = () =>
   toast.success(`Sorry! Something went wrong...`, {
     icon: "❌",
   });
 
 const ContactDetailPage = () => {
+  const location = useLocation();
+  const backLinkHref = location.state ?? "/contacts";
+
   const dispatch = useDispatch();
+  const famData = useSelector(selectFam);
+  const friendsData = useSelector(selectFriends);
+  const jobData = useSelector(selectJob);
 
   const [editActivated, setEditActivated] = useState(false);
 
@@ -109,7 +118,7 @@ const ContactDetailPage = () => {
   return (
     <>
       <div className={style.buttonsWrapper}>
-        <NavLink className={style.backBtn} to="/contacts">
+        <NavLink className={style.backBtn} to={backLinkHref}>
           <IoChevronBack className={style.backIcon} />
         </NavLink>
 
@@ -161,7 +170,7 @@ const ContactDetailPage = () => {
                     <FaPhone className={style.inputIcon} />
                     <Field
                       className={style.dataInput}
-                      type="number"
+                      type="text"
                       name="number"
                       placeholder="Number"
                     />
@@ -220,7 +229,10 @@ const ContactDetailPage = () => {
               dispatch(toggleFam(contactData));
             }}
           >
-            Add to family <MdOutlineFamilyRestroom />
+            {famData.some((el) => el.id === contactData.id)
+              ? "Remove from Family"
+              : "Add to Family"}
+            <MdOutlineFamilyRestroom />
           </button>
           <button
             className={style.groupBtn}
@@ -229,7 +241,10 @@ const ContactDetailPage = () => {
               dispatch(toggleFriend(contactData));
             }}
           >
-            Add to friends <FaUserFriends />
+            {friendsData.some((el) => el.id === contactData.id)
+              ? "Remove from Friends"
+              : "Add to Friends"}
+            <FaUserFriends />
           </button>
           <button
             className={style.groupBtn}
@@ -238,12 +253,13 @@ const ContactDetailPage = () => {
               dispatch(toggleJob(contactData));
             }}
           >
-            Add to job <MdWork />
+            {jobData.some((el) => el.id === contactData.id)
+              ? "Remove from Job"
+              : "Add to Job"}
+            <MdWork />
           </button>
         </div>
       </div>
-
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

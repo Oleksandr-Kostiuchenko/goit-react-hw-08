@@ -3,6 +3,8 @@
   line-height: 28px;
   font-weight: 700;
   font-size: 20px;
+
+  /* color: #4DC4FF; */
 }
 
 .pageHeader {
@@ -11,6 +13,10 @@
   justify-content: center;
   gap: 10px;
   margin-bottom: 20px;
+
+  padding: 10px;
+  border-radius: 10px;
+  /* box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.75); */
 }
 
 .iconWrapperEdit {
@@ -55,4 +61,15 @@
   gap: 10px;
 
   margin-left: auto;
+}
+
+.welcomeMessage {
+  font-size: 15px;
+}
+
+@media screen and (min-width: 1440px) {
+  .welcomeMessage {
+    /* font-weight: 600; */
+    font-size: 20px;
+  }
 }

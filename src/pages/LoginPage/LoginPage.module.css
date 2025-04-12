@@ -1,0 +1,71 @@
+.container {
+  width: 100%;
+  min-height: 800px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.registerPageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50%;
+  max-width: 50%;
+}
+
+.infoWrapper {
+  width: 70%;
+}
+
+.welcomeWrapper {
+  margin-bottom: 50px;
+}
+
+.pageTitle {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #0c1421;
+
+  margin-bottom: 30px;
+}
+
+.imageWrapper {
+  background-image: url("/public/abstract1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  min-height: 100%;
+}
+
+@media screen and (max-width: 1440px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .registerPageWrapper {
+    min-width: 100%;
+  }
+
+  .infoWrapper {
+    width: 100%;
+  }
+
+  .imageWrapper {
+    order: -1;
+    min-height: 200px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .welcomeWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-bottom: 20px;
+  }
+}

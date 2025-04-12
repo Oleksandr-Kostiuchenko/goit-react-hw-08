@@ -11,7 +11,6 @@ import AuthNav from "../AuthNav/AuthNav";
 //* Redux
 import { useSelector } from "react-redux";
 import { selectisLoggedIn, selectUser } from "../../redux/auth/selectors";
-import { logout } from "../../redux/auth/operations";
 
 //* Router
 import { NavLink } from "react-router-dom";
@@ -39,8 +38,8 @@ const Header = ({ setModalIsOpen }) => {
 
         {isLoggedIn && (
           <div className={style.userDataWrapper}>
-            <p>
-              Welcome,
+            <p className={style.welcomeMessage}>
+              👋🏻Welcome,
               {userData.name.length > 5 && isMobile
                 ? ` ${userData.name.slice(0, 5)}...`
                 : ` ${userData.name.slice(0, 30)}${

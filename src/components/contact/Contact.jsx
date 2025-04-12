@@ -12,41 +12,19 @@ import { selectFavContacts } from "../../redux/favcontacts/selectors";
 import { deleteContact } from "../../redux/contacts/operations";
 import { addFav, deleteFav } from "../../redux/favcontacts/slice";
 import { removeFromAllCategories } from "../../redux/category/slice";
-import { selectUser } from "../../redux/auth/selectors";
+import { setSelectedContact } from "../../redux/contacts/slice";
 
 //* Router
 import { NavLink } from "react-router-dom";
 
-//* Notifier
-const notifySuccessRemoove = (personName) =>
-  toast.success(`${personName} is successfully deleted!`, {
-    icon: "❌",
-  });
-
-const notifyFailure = () =>
-  toast.success(`Sorry! Something went wrong...`, {
-    icon: "❌",
-  });
-
-const Contact = ({ contactData }) => {
+const Contact = ({ contactData, setDeleteModalIsOpen }) => {
   const dispatch = useDispatch();
-  const errorData = useSelector(selectError);
   const favInfo = useSelector(selectFavContacts);
   const isFav = favInfo.some((fav) => fav && fav.id === contactData.id);
-  const userData = useSelector(selectUser);
 
-  const handleDelete = async () => {
-    try {
-      await dispatch(deleteContact(contactData.id)).unwrap();
-      dispatch(deleteFav(contactData));
-      dispatch(removeFromAllCategories(contactData));
-
-      if (!errorData) {
-        notifySuccessRemoove(contactData.name);
-      }
-    } catch (error) {
-      notifyFailure();
-    }
+  const handleDeleteClick = () => {
+    dispatch(setSelectedContact(contactData));
+    setDeleteModalIsOpen(true);
   };
 
   const handleToggleFav = () => {
@@ -75,7 +53,7 @@ const Contact = ({ contactData }) => {
         <div className={style.personInfoWrapper}>
           <div
             className={style.personAvatar}
-            style={{ backgroundColor: contactData.color }}
+            style={{ backgroundColor: "#A3C4BC" }}
           >
             {firstName[0]}
             {secondName !== undefined && secondName[0]}
@@ -94,7 +72,7 @@ const Contact = ({ contactData }) => {
         </div>
 
         <div className={style.btnsWrapper}>
-          <button className={style.deleteBtn} onClick={handleDelete}>
+          <button className={style.deleteBtn} onClick={handleDeleteClick}>
             Delete
           </button>
           <button className={style.favBtn} onClick={handleToggleFav}>

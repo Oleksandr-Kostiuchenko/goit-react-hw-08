@@ -24,6 +24,12 @@ const slice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    selectedContact: null,
+  },
+  reducers: {
+    setSelectedContact: (state, action) => {
+      state.selectedContact = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // Fetch contacts
@@ -73,4 +79,5 @@ const slice = createSlice({
   },
 });
 
+export const { setSelectedContact } = slice.actions;
 export default slice.reducer;

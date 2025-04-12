@@ -38,7 +38,6 @@ const FavPage = () => {
       ) : (
         <Alert>No favorite contacts yet!</Alert>
       )}
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

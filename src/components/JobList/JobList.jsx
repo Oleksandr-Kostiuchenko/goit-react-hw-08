@@ -4,7 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
 
 //* Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectJob } from "../../redux/category/selectors";
 
 //* Components
@@ -39,7 +39,6 @@ const JobList = () => {
           ))}
         </AnimatePresence>
       </ul>
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

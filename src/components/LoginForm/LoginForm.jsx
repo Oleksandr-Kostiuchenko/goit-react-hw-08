@@ -23,8 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 //* Notifier
-const notifySuccessAdd = (personName) =>
-  toast.success(`${personName} is successfully added!`);
+const notifySuccess = () => toast.success(`Successfully logged in. Welcome!`);
 const notifyFailure = () =>
   toast.success(`Sorry! Something went wrong...`, {
     icon: "❌",
@@ -34,9 +33,17 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const onFormSubmit = (formData, actions) => {
-    dispatch(login(formData));
+    try {
+      dispatch(login(formData))
+        .unwrap()
+        .then(() => {
+          notifySuccess();
 
-    actions.resetForm();
+          actions.resetForm();
+        });
+    } catch (error) {
+      notifyFailure();
+    }
   };
 
   return (

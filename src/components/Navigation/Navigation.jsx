@@ -1,18 +1,31 @@
 //* Libraries
 import style from "./Navigation.module.css";
+import toast from "react-hot-toast";
 import { FaHome } from "react-icons/fa";
 import { IoPersonAdd } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { FaHeart } from "react-icons/fa6";
-import { MdGroups } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi2";
 
+//* CLSX
+import clsx from "clsx";
+const clasConstructor = ({ isActive }) => {
+  return clsx(style.NavLink, { [style.activeLink]: isActive });
+};
 //* Router
 import { NavLink } from "react-router-dom";
 
 //* Redux
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
+
+//* Notifier
+const notifySuccess = () =>
+  toast.success(`You have successfully logged out. See you soon!`);
+const notifyFailure = () =>
+  toast.success(`Sorry! Something went wrong...`, {
+    icon: "❌",
+  });
 
 const Navigation = ({ setModalIsOpen }) => {
   const dispatch = useDispatch();
@@ -22,7 +35,16 @@ const Navigation = ({ setModalIsOpen }) => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    try {
+      dispatch(logout())
+        .unwrap()
+        .then(() => {
+          notifySuccess();
+        });
+    } catch (error) {
+      notifyFailure();
+    }
+
     setModalIsOpen(false);
   };
 
@@ -35,37 +57,55 @@ const Navigation = ({ setModalIsOpen }) => {
           }}
           className={style.mobileMenuCloseBtn}
         >
-          <IoMdClose />
+          <IoMdClose className={style.closeIcon} />
         </button>
 
         <nav className={style.navWrapper}>
           <ul className={style.navList}>
             <li className={style.navItem}>
-              <NavLink to="/contacts" onClick={handleNavClick}>
-                <FaHome />
+              <NavLink
+                className={clasConstructor}
+                to="/contacts"
+                onClick={handleNavClick}
+              >
+                <FaHome className={style.navIcon} />
                 Contacts
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/add" onClick={handleNavClick}>
-                <IoPersonAdd />
+              <NavLink
+                className={clasConstructor}
+                to="/add"
+                onClick={handleNavClick}
+              >
+                <IoPersonAdd className={style.navIcon} />
                 Add contacts
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/fav" onClick={handleNavClick}>
-                <FaHeart />
+              <NavLink
+                className={clasConstructor}
+                to="/fav"
+                onClick={handleNavClick}
+              >
+                <FaHeart className={style.navIcon} />
                 Favorites
               </NavLink>
             </li>
             <li className={style.navItem}>
-              <NavLink to="/groups" onClick={handleNavClick}>
-                <HiUserGroup />
+              <NavLink
+                className={clasConstructor}
+                to="/groups"
+                onClick={handleNavClick}
+              >
+                <HiUserGroup className={style.navIcon} />
                 Groups
               </NavLink>
             </li>
             <li className={style.logoutBtnEl}>
-              <button onClick={handleLogout}>Logout</button>
+              <button className={style.logoutBtn} onClick={handleLogout}>
+                Logout
+              </button>
             </li>
           </ul>
         </nav>

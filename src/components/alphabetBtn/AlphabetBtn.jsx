@@ -1,7 +1,7 @@
 import style from "./AlphabetBtn.module.css";
 
 //* Redux
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/filters/slice";
 
 const AlphabetBtn = ({ children }) => {

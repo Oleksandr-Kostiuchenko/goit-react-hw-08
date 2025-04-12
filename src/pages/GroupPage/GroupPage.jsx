@@ -1,19 +1,9 @@
 //* Libraries
 import style from "./GroupPage.module.css";
-import { Toaster } from "react-hot-toast";
-import { useState, useEffect, useId } from "react";
-
-//* Components
-import Navigation from "../../components/Navigation/Navigation";
-import SearchBox from "../../components/searchbox/SearchBox";
-import Header from "../../components/Header/Header";
-import FavList from "../../components/favcontactlist/FavList";
-import Loader from "../../components/Loader/Loader";
-import Alert from "../../components/Alert/Alert";
+import { useEffect } from "react";
 
 //* Redux
 import { useSelector, useDispatch } from "react-redux";
-import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
 import { selectFavContacts } from "../../redux/favcontacts/selectors";
 import { selectUser } from "../../redux/auth/selectors";
 import { setFavUser, fetchFavs } from "../../redux/favcontacts/slice";

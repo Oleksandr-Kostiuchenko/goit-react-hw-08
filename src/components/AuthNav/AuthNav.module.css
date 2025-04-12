@@ -8,3 +8,21 @@
   justify-content: center;
   gap: 10px;
 }
+
+.NavLink {
+  border-bottom: 3px solid transparent;
+  padding-bottom: 10px;
+  border-radius: 1px;
+
+  transition: border 250ms linear, color 250ms linear, font-weight 250ms linear;
+}
+
+.activeLink {
+  border-color: #1e3a8a;
+  color: #1e3a8a;
+  font-weight: 800;
+}
+
+.NavLink:hover {
+  border-color: #1e3a8a;
+}

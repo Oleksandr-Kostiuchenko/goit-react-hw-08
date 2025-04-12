@@ -1,6 +1,5 @@
 //* Libraries
 import style from "./ContactList.module.css";
-import toast, { Toaster } from "react-hot-toast";
 import { AnimatePresence, motion } from "framer-motion";
 
 //* Components
@@ -10,7 +9,7 @@ import Contact from "../contact/Contact";
 import { useSelector } from "react-redux";
 import { selectFilteredContacts } from "../../redux/contacts/selectors";
 
-const ContactList = () => {
+const ContactList = ({ setDeleteModalIsOpen }) => {
   const visibleContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -25,12 +24,14 @@ const ContactList = () => {
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.4 }}
             >
-              <Contact contactData={el} />
+              <Contact
+                contactData={el}
+                setDeleteModalIsOpen={setDeleteModalIsOpen}
+              />
             </motion.li>
           ))}
         </AnimatePresence>
       </ul>
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

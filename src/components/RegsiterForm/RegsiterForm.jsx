@@ -28,8 +28,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 
 //* Notifier
-const notifySuccessAdd = (personName) =>
-  toast.success(`${personName} is successfully added!`);
+const notifySuccess = () => toast.success(`Account created successfully!`);
 const notifyFailure = () =>
   toast.success(`Sorry! Something went wrong...`, {
     icon: "❌",
@@ -39,10 +38,17 @@ const RegsiterForm = () => {
   const dispatch = useDispatch();
 
   const onFormSubmit = (formData, actions) => {
-    dispatch(register(formData));
+    try {
+      dispatch(register(formData))
+        .unwrap()
+        .then(() => {
+          notifySuccess();
 
-    notifySuccessAdd();
-    actions.resetForm();
+          actions.resetForm();
+        });
+    } catch (error) {
+      notifyFailure();
+    }
   };
 
   return (

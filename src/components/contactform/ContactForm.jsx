@@ -3,7 +3,6 @@ import style from "./ContactForm.module.css";
 import { IoPersonAdd } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
 import { motion } from "framer-motion";
-import { nanoid } from "nanoid";
 import toast, { Toaster } from "react-hot-toast";
 
 // * Redux
@@ -43,7 +42,6 @@ const ContactForm = () => {
       await dispatch(
         addContact({
           ...formData,
-          id: `${nanoid(16)}`,
         })
       ).unwrap();
 
@@ -113,7 +111,6 @@ const ContactForm = () => {
           </Form>
         </motion.div>
       </Formik>
-      <Toaster position="top-center" reverseOrder={false} />
     </>
   );
 };

@@ -1,11 +1,9 @@
 //* Libraries
 import style from "./Layout.module.css";
-import { useState, useEffect, useId } from "react";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
 
 //* Components
-import ContactList from "../../components/contactlist/ContactList";
-import SearchBox from "../../components/searchbox/SearchBox";
-import AlphabetFilter from "../../components/alphabetFilter/AlphabetFilter";
 import Navigation from "../../components/Navigation/Navigation";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/Loader/Loader";
@@ -30,6 +28,11 @@ const Layout = ({ children }) => {
       {errorData && <Alert>Sorry! Something went wrong...</Alert>}
       {modalIsOpen && <Navigation setModalIsOpen={setModalIsOpen} />}
       {isLoadingData && <Loader />}
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        toastOptions={{ duration: 4000 }}
+      />
     </div>
   );
 };
