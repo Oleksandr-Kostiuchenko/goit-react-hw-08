@@ -25,10 +25,14 @@ const slice = createSlice({
     isLoading: false,
     error: null,
     selectedContact: null,
+    deleteModalIsOpen: false,
   },
   reducers: {
     setSelectedContact: (state, action) => {
       state.selectedContact = action.payload;
+    },
+    setDeleteModalIsOpen: (state, action) => {
+      state.deleteModalIsOpen = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -79,5 +83,5 @@ const slice = createSlice({
   },
 });
 
-export const { setSelectedContact } = slice.actions;
+export const { setSelectedContact, setDeleteModalIsOpen } = slice.actions;
 export default slice.reducer;

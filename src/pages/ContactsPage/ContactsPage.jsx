@@ -22,8 +22,6 @@ import { setFavUser, fetchFavs } from "../../redux/favcontacts/slice";
 import { setGroupUser, fetchGroups } from "../../redux/category/slice";
 
 const ContactsPage = () => {
-  const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
-
   const dispatch = useDispatch();
   const contactsData = useSelector(selectContacts);
   const userData = useSelector(selectUser);
@@ -48,12 +46,8 @@ const ContactsPage = () => {
 
       <div className={style.contactsWrapper}>
         {contactsData.length > 1 && <AlphabetFilter />}
-        <ContactList setDeleteModalIsOpen={setDeleteModalIsOpen} />
+        <ContactList />
       </div>
-
-      {deleteModalIsOpen && (
-        <DeleteModal setDeleteModalIsOpen={setDeleteModalIsOpen} />
-      )}
     </>
   );
 };

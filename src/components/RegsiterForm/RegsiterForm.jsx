@@ -1,9 +1,13 @@
 //* Libraries
 import style from "./RegsiterForm.module.css";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import { IoPerson } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+
+//* Components
+import Alert from "../Alert/Alert";
 
 //* Formik
 import * as Yup from "yup";
@@ -26,6 +30,7 @@ const validationSchema = Yup.object().shape({
 //* Redux
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
+import { useState } from "react";
 
 //* Notifier
 const notifySuccess = () => toast.success(`Account created successfully!`);
@@ -36,6 +41,7 @@ const notifyFailure = () =>
 
 const RegsiterForm = () => {
   const dispatch = useDispatch();
+  const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const onFormSubmit = (formData, actions) => {
     try {
@@ -43,8 +49,13 @@ const RegsiterForm = () => {
         .unwrap()
         .then(() => {
           notifySuccess();
+          setAlertIsVisible(false);
 
           actions.resetForm();
+        })
+        .catch(() => {
+          notifyFailure();
+          setAlertIsVisible(true);
         });
     } catch (error) {
       notifyFailure();
@@ -59,7 +70,7 @@ const RegsiterForm = () => {
     >
       <Form className={style.formWrapper} autoComplete="off">
         <div className={style.inputsWrapper}>
-          <div>
+          <div className={style.inputErrorWrapper}>
             <label className={style.inputLabel} htmlFor="">
               Name
             </label>
@@ -74,7 +85,7 @@ const RegsiterForm = () => {
             />
           </div>
 
-          <div>
+          <div className={style.inputErrorWrapper}>
             <label className={style.inputLabel} htmlFor="">
               Email
             </label>
@@ -84,12 +95,12 @@ const RegsiterForm = () => {
             </div>
             <ErrorMessage
               className={style.errorMessage}
-              name="number"
+              name="email"
               component="span"
             />
           </div>
 
-          <div>
+          <div className={style.inputErrorWrapper}>
             <label className={style.inputLabel} htmlFor="">
               Password
             </label>
@@ -103,7 +114,7 @@ const RegsiterForm = () => {
             </div>
             <ErrorMessage
               className={style.errorMessage}
-              name="number"
+              name="password"
               component="span"
             />
           </div>
@@ -112,6 +123,16 @@ const RegsiterForm = () => {
         <button className={style.addButton} type="submit">
           Register
         </button>
+        {alertIsVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Alert>Try another email or password</Alert>
+          </motion.div>
+        )}
       </Form>
     </Formik>
   );

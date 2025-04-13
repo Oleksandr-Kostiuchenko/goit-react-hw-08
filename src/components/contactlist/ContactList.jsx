@@ -9,7 +9,7 @@ import Contact from "../contact/Contact";
 import { useSelector } from "react-redux";
 import { selectFilteredContacts } from "../../redux/contacts/selectors";
 
-const ContactList = ({ setDeleteModalIsOpen }) => {
+const ContactList = () => {
   const visibleContacts = useSelector(selectFilteredContacts);
 
   return (
@@ -24,10 +24,7 @@ const ContactList = ({ setDeleteModalIsOpen }) => {
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.4 }}
             >
-              <Contact
-                contactData={el}
-                setDeleteModalIsOpen={setDeleteModalIsOpen}
-              />
+              <Contact contactData={el} />
             </motion.li>
           ))}
         </AnimatePresence>

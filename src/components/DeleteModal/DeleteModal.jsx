@@ -12,6 +12,7 @@ import { removeFromAllCategories } from "../../redux/category/slice";
 import { selectError } from "../../redux/contacts/selectors";
 import { setSelectedContact } from "../../redux/contacts/slice";
 import { selectSelectedContact } from "../../redux/contacts/selectors";
+import { setDeleteModalIsOpen } from "../../redux/contacts/slice";
 
 //* Notifier
 const notifySuccessRemoove = (personName) =>
@@ -24,7 +25,7 @@ const notifyFailure = () =>
     icon: "❌",
   });
 
-const DeleteModal = ({ setDeleteModalIsOpen }) => {
+const DeleteModal = () => {
   const dispatch = useDispatch();
   const errorData = useSelector(selectError);
 
@@ -40,8 +41,8 @@ const DeleteModal = ({ setDeleteModalIsOpen }) => {
         notifySuccessRemoove(contactData.name);
       }
 
+      dispatch(setDeleteModalIsOpen(false));
       dispatch(setSelectedContact(null));
-      setDeleteModalIsOpen(false);
     } catch (error) {
       notifyFailure();
     }
@@ -51,7 +52,7 @@ const DeleteModal = ({ setDeleteModalIsOpen }) => {
     <div className={style.modalBackdrop}>
       <div className={`${style.modal} container`}>
         <p className={style.modalTitle}>
-          Are you sure you want to delete {contactData.name}?
+          Are you sure you want to delete {contactData && contactData.name}?
         </p>
 
         <div className={style.buttonWrapper}>
@@ -63,7 +64,7 @@ const DeleteModal = ({ setDeleteModalIsOpen }) => {
           </button>
           <button
             className={`${style.modalBtnCircle} ${style.crossBtn}`}
-            onClick={() => setDeleteModalIsOpen(false)}
+            onClick={() => dispatch(setDeleteModalIsOpen(false))}
           >
             <IoClose />
           </button>

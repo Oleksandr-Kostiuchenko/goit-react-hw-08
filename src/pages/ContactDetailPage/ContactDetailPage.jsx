@@ -138,8 +138,12 @@ const ContactDetailPage = () => {
         <div className={style.infoWrapper}>
           {!editActivated ? (
             <>
-              <p className={style.contactName}>{contactData.name}</p>
-              <p className={style.contactPhone}>{contactData.number}</p>
+              <p className={`${style.contactName} contactName`}>
+                {contactData.name}
+              </p>
+              <p className={`${style.contactPhone} contactPhone`}>
+                {contactData.number}
+              </p>
             </>
           ) : (
             <Formik
@@ -150,7 +154,7 @@ const ContactDetailPage = () => {
               <Form className={style.formWrapper} autoComplete="off">
                 <div>
                   <div className={style.inputIconWrapper}>
-                    <BsPersonFill className={style.inputIcon} />
+                    <BsPersonFill className={`${style.inputIcon} searchIcon`} />
                     <Field
                       className={style.dataInput}
                       type="text"
@@ -167,7 +171,7 @@ const ContactDetailPage = () => {
 
                 <div>
                   <div className={style.inputIconWrapper}>
-                    <FaPhone className={style.inputIcon} />
+                    <FaPhone className={`${style.inputIcon} searchIcon`} />
                     <Field
                       className={style.dataInput}
                       type="text"
@@ -223,7 +227,7 @@ const ContactDetailPage = () => {
 
         <div className={style.groupWrapper}>
           <button
-            className={style.groupBtn}
+            className={`${style.groupBtn} groupBtn`}
             onClick={() => {
               notifySuccess();
               dispatch(toggleFam(contactData));
@@ -235,7 +239,7 @@ const ContactDetailPage = () => {
             <MdOutlineFamilyRestroom />
           </button>
           <button
-            className={style.groupBtn}
+            className={`${style.groupBtn} groupBtn`}
             onClick={() => {
               notifySuccess();
               dispatch(toggleFriend(contactData));
@@ -247,7 +251,7 @@ const ContactDetailPage = () => {
             <FaUserFriends />
           </button>
           <button
-            className={style.groupBtn}
+            className={`${style.groupBtn} groupBtn`}
             onClick={() => {
               notifySuccess();
               dispatch(toggleJob(contactData));

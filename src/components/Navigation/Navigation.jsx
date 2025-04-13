@@ -49,13 +49,13 @@ const Navigation = ({ setModalIsOpen }) => {
   };
 
   return (
-    <div className={style.menuBackdrop}>
+    <div className={`${style.menuBackdrop} menuBackdrop`}>
       <div className={`${style.container} ${style.mobileMenuContainer}`}>
         <button
           onClick={() => {
             setModalIsOpen(false);
           }}
-          className={style.mobileMenuCloseBtn}
+          className={`${style.mobileMenuCloseBtn} icon`}
         >
           <IoMdClose className={style.closeIcon} />
         </button>

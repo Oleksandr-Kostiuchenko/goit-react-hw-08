@@ -7,24 +7,22 @@ import { FaHeart } from "react-icons/fa6";
 
 //* Redux
 import { useDispatch, useSelector } from "react-redux";
-import { selectError } from "../../redux/contacts/selectors";
 import { selectFavContacts } from "../../redux/favcontacts/selectors";
-import { deleteContact } from "../../redux/contacts/operations";
 import { addFav, deleteFav } from "../../redux/favcontacts/slice";
-import { removeFromAllCategories } from "../../redux/category/slice";
 import { setSelectedContact } from "../../redux/contacts/slice";
+import { setDeleteModalIsOpen } from "../../redux/contacts/slice";
 
 //* Router
 import { NavLink } from "react-router-dom";
 
-const Contact = ({ contactData, setDeleteModalIsOpen }) => {
+const Contact = ({ contactData }) => {
   const dispatch = useDispatch();
   const favInfo = useSelector(selectFavContacts);
   const isFav = favInfo.some((fav) => fav && fav.id === contactData.id);
 
   const handleDeleteClick = () => {
     dispatch(setSelectedContact(contactData));
-    setDeleteModalIsOpen(true);
+    dispatch(setDeleteModalIsOpen(true));
   };
 
   const handleToggleFav = () => {
@@ -58,8 +56,11 @@ const Contact = ({ contactData, setDeleteModalIsOpen }) => {
             {firstName[0]}
             {secondName !== undefined && secondName[0]}
           </div>
-          <div className={style.nameWrapper}>
-            <NavLink to={`/${contactData.id}`} className={style.personName}>
+          <div className={`${style.nameWrapper}`}>
+            <NavLink
+              to={`/${contactData.id}`}
+              className={`${style.personName} personName`}
+            >
               {contactData.name}
             </NavLink>
             <a
@@ -77,9 +78,9 @@ const Contact = ({ contactData, setDeleteModalIsOpen }) => {
           </button>
           <button className={style.favBtn} onClick={handleToggleFav}>
             {isFav ? (
-              <FaHeart className={style.likeIcon} />
+              <FaHeart className={`${style.likeIcon} icon`} />
             ) : (
-              <FaRegHeart className={style.likeIcon} />
+              <FaRegHeart className={`${style.likeIcon} icon`} />
             )}
           </button>
         </div>

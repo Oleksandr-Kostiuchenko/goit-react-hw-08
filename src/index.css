@@ -114,3 +114,49 @@ input {
 }
 
 /* ================= /RESET & BASE ================= */
+
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark {
+  background-color: #0c162d;
+  color: #f1f5f9;
+}
+
+body.dark h2,
+body.dark label {
+  color: #f1f5f9;
+}
+
+body.dark .icon {
+  fill: #f4f8ff;
+}
+
+body.dark .menuBackdrop {
+  background-color: #0c162d;
+  color: #f1f5f9;
+}
+
+body.dark .icon {
+  color: #f1f5f9;
+}
+
+body.dark .searchIcon {
+  color: #000000;
+}
+
+body.dark .personName {
+  color: #f1f5f9;
+}
+
+body.dark .contactName {
+  color: #f1f5f9;
+}
+
+body.dark .groupBtn {
+  color: #f1f5f9;
+
+  border-color: #f1f5f9;
+}

@@ -10,7 +10,7 @@ const UserNav = ({ setModalIsOpen }) => {
         }}
         className={style.menuBtn}
       >
-        <IoMdMenu className={style.icon} />
+        <IoMdMenu className={`${style.icon} icon`} />
       </button>
     </div>
   );

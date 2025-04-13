@@ -1,12 +1,17 @@
 //* Libraries
 import style from "./LoginForm.module.css";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 
 //* Redux
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { login } from "../../redux/auth/operations";
+
+//* Components
+import Alert from "../Alert/Alert";
 
 //* Formik
 import * as Yup from "yup";
@@ -30,6 +35,8 @@ const notifyFailure = () =>
   });
 
 const LoginForm = () => {
+  const [alertIsVisible, setAlertIsVisible] = useState(false);
+
   const dispatch = useDispatch();
 
   const onFormSubmit = (formData, actions) => {
@@ -38,8 +45,13 @@ const LoginForm = () => {
         .unwrap()
         .then(() => {
           notifySuccess();
+          setAlertIsVisible(false);
 
           actions.resetForm();
+        })
+        .catch(() => {
+          notifyFailure();
+          setAlertIsVisible(true);
         });
     } catch (error) {
       notifyFailure();
@@ -54,7 +66,7 @@ const LoginForm = () => {
     >
       <Form className={style.formWrapper} autoComplete="off">
         <div className={style.inputsWrapper}>
-          <div>
+          <div className={style.inputErrorWrapper}>
             <label className={style.inputLabel} htmlFor="">
               Email
             </label>
@@ -64,12 +76,12 @@ const LoginForm = () => {
             </div>
             <ErrorMessage
               className={style.errorMessage}
-              name="number"
+              name="email"
               component="span"
             />
           </div>
 
-          <div>
+          <div className={style.inputErrorWrapper}>
             <label className={style.inputLabel} htmlFor="">
               Password
             </label>
@@ -83,7 +95,7 @@ const LoginForm = () => {
             </div>
             <ErrorMessage
               className={style.errorMessage}
-              name="number"
+              name="password"
               component="span"
             />
           </div>
@@ -92,6 +104,18 @@ const LoginForm = () => {
         <button className={style.addButton} type="submit">
           Login
         </button>
+        {alertIsVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Alert>
+              Incorrect account data! Try another login or password.
+            </Alert>
+          </motion.div>
+        )}
       </Form>
     </Formik>
   );

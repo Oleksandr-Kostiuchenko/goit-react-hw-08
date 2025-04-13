@@ -6,6 +6,7 @@ import { MdRocketLaunch } from "react-icons/md";
 import { FaInfoCircle } from "react-icons/fa";
 import { FaDev } from "react-icons/fa";
 import { useSpring, animated } from "react-spring";
+import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 
 //* React
 import { useState } from "react";
@@ -47,7 +48,10 @@ const HomePage = () => {
       >
         <FcContacts className={style.contactBookIcon} />
       </animated.div>
-      <h1>Welcome to Contact Book App!</h1>
+      <div className={style.toggler}>
+        <ThemeSwitcher />
+      </div>
+      <h1>Welcome to Contact Book App! </h1>
       <p className={style.description}>
         To start using it, you should create an account or login.
       </p>

@@ -17,13 +17,13 @@ const SearchBox = () => {
 
   return (
     <motion.div
-      className={style.SearchBoxWrapper}
+      className={`${style.SearchBoxWrapper} SearchBoxWrapper`}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <CiSearch className={style.searchIcon} />
+      <CiSearch className={`${style.searchIcon} searchIcon`} />
       <input
         placeholder="Search"
         className={style.contactInput}

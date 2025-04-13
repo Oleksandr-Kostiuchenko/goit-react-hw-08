@@ -7,6 +7,7 @@ import filterReducer from "./filters/slice";
 import favortitesReducer from "./favcontacts/slice";
 import groupReducer from "./category/slice";
 import authReducer from "./auth/slice";
+import userThemeReducer from "./theme/slice";
 
 //* Persist
 import {
@@ -39,6 +40,14 @@ const persistedAuthReducer = persistReducer(
   authReducer
 );
 
+const persistedUserThemeReducer = persistReducer(
+  {
+    key: "userTheme",
+    storage,
+  },
+  userThemeReducer
+);
+
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
@@ -46,6 +55,7 @@ export const store = configureStore({
     filters: filterReducer,
     fav: favortitesReducer,
     groups: persistedGroupsReducer,
+    userTheme: persistedUserThemeReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

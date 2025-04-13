@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive";
 //* Components
 import UserNav from "../UserNav/UserNav";
 import AuthNav from "../AuthNav/AuthNav";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 //* Redux
 import { useSelector } from "react-redux";
@@ -32,6 +33,7 @@ const Header = ({ setModalIsOpen }) => {
         <div className={style.iconWrapper}>
           <MdAccountCircle className={style.icon} />
         </div>
+
         <NavLink to="/" className={style.pageTitle}>
           Home
         </NavLink>
@@ -48,7 +50,13 @@ const Header = ({ setModalIsOpen }) => {
             </p>
           </div>
         )}
-        {isLoggedIn ? <UserNav setModalIsOpen={setModalIsOpen} /> : <AuthNav />}
+        {isLoggedIn ? (
+          <UserNav setModalIsOpen={setModalIsOpen} />
+        ) : (
+          <>
+            <AuthNav />
+          </>
+        )}
       </motion.div>
     </>
   );
