@@ -120,6 +120,3 @@ function App() {
 }
 
 export default App;
-
-// sanyatopedevbest@gmail.com
-// alextopdevchik@gmail.com

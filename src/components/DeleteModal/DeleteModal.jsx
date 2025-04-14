@@ -50,8 +50,8 @@ const DeleteModal = () => {
 
   return (
     <div className={style.modalBackdrop}>
-      <div className={`${style.modal} container`}>
-        <p className={style.modalTitle}>
+      <div className={`${style.modal} container modalContainer`}>
+        <p className={`${style.modalTitle} modalTitle`}>
           Are you sure you want to delete {contactData && contactData.name}?
         </p>
 
@@ -60,13 +60,13 @@ const DeleteModal = () => {
             onClick={handleDelete}
             className={`${style.modalBtnCircle} ${style.markBtn}`}
           >
-            <IoMdCheckmark />
+            <IoMdCheckmark className="icon" />
           </button>
           <button
             className={`${style.modalBtnCircle} ${style.crossBtn}`}
             onClick={() => dispatch(setDeleteModalIsOpen(false))}
           >
-            <IoClose />
+            <IoClose className="icon" />
           </button>
         </div>
       </div>

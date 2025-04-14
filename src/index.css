@@ -160,3 +160,12 @@ body.dark .groupBtn {
 
   border-color: #f1f5f9;
 }
+
+body.dark .modalContainer {
+  color: #f1f5f9;
+  background-color: #02133a;
+}
+
+body.dark .modalTitle {
+  /* color: #000000; */
+}
